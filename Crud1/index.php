@@ -7,6 +7,7 @@
     <title>Registro de Clientes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src = "validar.js" defer></script>
+    <?php require("Config/conexion.php"); ?>
 </head>
 
 <body>
@@ -30,7 +31,6 @@
             </thead>
             <tbody>
                 <?php
-                require("Config/conexion.php");
                 $sql = $conexion->query("select * from tablax");
                 //Arreglo para llamar valores de la BD al formulario
                 while ($reg = $sql->fetch_assoc()) //Se puede usar tambien fetch_array
@@ -42,7 +42,7 @@
                         <th scope="row"><?php echo $reg['fono'] ?></th>
                         <th scope="row"><?php echo $reg['direccion'] ?></th>
                         <th>
-                            <a href="index.php?run=<?php echo $reg['run'] ?>" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modaleditar">Editar</button> <!-- Boton EDitar envia variable por url-->
+                            <a href="index.php?runedit=<?php echo $reg['run'] ?>" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modaleditar">Editar</button> <!-- Boton EDitar envia variable por url-->
 
                             <a href="crud/eliminardatos.php?run=<?php echo $reg['run'] ?>" class="btn btn-dark">Eliminar</a> <!--Boton Eliminar llamando su accion-->
                         </th>
@@ -106,6 +106,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> <!-- Boton "x" para cerrar -->
                 </div>
                 <div class="modal-body"> <!--Cuerpo del Formulario modal-->
+                    <?php                      
+                        $sql1 = "select * from tablax where run = " .$_REQUEST['runedit'];
+                        $res = $conexion->query($sql1);
+                        $campos = $res->fetch_assoc();
+                    ?>     
                     <p>Ingrese Run</p> <!-- Linea de Texto que solicita el run a agregar-->
                     <input type="text" class="form-control" name="run" value="<?php echo $campos['run']; ?>" /> <!--Espacio para ingresar texto asignando valores buscados-->
                     <div id="msg"></div>
