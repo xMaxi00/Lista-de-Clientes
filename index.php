@@ -58,7 +58,7 @@
         </table>
 
         <div><!-- Boton para Agregar Cliente que abre el Modal Form -->
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalagregar">Agregar</button>
+            <button type="button" onclick="document.getElementById('modalagregar').style.display='block'" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalagregar">Agregar</button>
         </div>
 
     </form>
