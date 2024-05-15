@@ -66,7 +66,8 @@
 
     <!-- Caracteristicas del Modal, es un formulario que aparece en forma de ventana sin cambiar de pantalla-->
     <!-- Al principio no guardaba los datos pero al reemplazar un div con Form si tomo las acciones y funciono perfecto-->
-    <form class="modal fade" id="modalagregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" action="../crud1/crud/insertardatos.php" method="POST"> <!-- Con el Id se llama al modal en el Boton de Agregar-->
+    <div class="modal fade" id="modalagregar">
+    <form  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" action="../crud1/crud/insertardatos.php" method="POST"> <!-- Con el Id se llama al modal en el Boton de Agregar-->
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -95,6 +96,8 @@
         </div>
         <td id="errornombre" style="visibility: hidden" >Falta Nombre</td> <!-- Aviso de falta nombre -->
     </form>
+        </div>
+
 
 
     <!-- Caracteristicas del Modal, es un formulario que aparece en forma de ventana sin cambiar de pantalla-->
